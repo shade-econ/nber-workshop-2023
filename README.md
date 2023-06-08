@@ -6,7 +6,7 @@ An agenda for the workshop is available here:
 
 https://www.nber.org/conferences/heterogeneous-agent-macro-workshop-spring-2023
 
-This is also where we will post lecture notes and other reading materials.
+This is also where we will post lecture notes and other reading materials. If you're familiar with git, you can clone this repository and pull the latest updates to the materials. Otherwise, you can download the [latest version of the repository as a zip by clicking this link](https://github.com/shade-econ/nber-workshop-2023/archive/refs/heads/main.zip).
 
 # Installation
 
@@ -18,7 +18,9 @@ If you are accustomed to Matlab or Julia, QuantEcon's [Matlab-Python-Julia cheat
 
 # First lecture online
 
-Before we start on Monday, please watch the video recording of the first lecture, "Standard Incomplete Markets Model: Steady-State". You can follow the slides along on the class notebook. 
+Before we start on Monday, please watch the video recording of the first lecture, "Lecture 1: Standard Incomplete Markets Steady State".
+
+The slides for the lecture are a Jupyter notebook, which [you can view on GitHub here](https://github.com/shade-econ/nber-workshop-2023/blob/main/Lectures/Lecture%201%2C%20Standard%20Incomplete%20Markets%20Steady%20State.ipynb), or open on your own computer by navigating to `Lectures/Lecture 1, Standard Incomplete Markets Steady State.ipynb` in the repository. You are encouraged to follow along and play around with the notebook yourself!
 
 [Part 0: introduction (11:33 min)](https://www.dropbox.com/s/qsdzn2pb3u530r6/Part%200%2C%20introduction.mp4?dl=0)
 
