@@ -77,54 +77,6 @@ def log_prior(theta, dist, arg1, arg2):
         raise ValueError('Distribution provided is not implemented in log_prior!')
 
 
-"""Historical decomposition"""
-
-def back_out_shocks(As, y, sigma_e=None, sigma_o=None, preperiods=0):
-    """Calculates most likely shock paths if As is true set of IRFs
-
-    Parameters
-    ----------
-    As : array (Tm*O*E) giving the O*E matrix mapping shocks to observables at each of Tm lags in the MA(infty),
-            e.g. As[6, 3, 5] gives the impact of shock 5, 6 periods ago, on observable 3 today
-    y : array (To*O) giving the data (already assumed to be demeaned, though no correction is made for this in the log-likelihood)
-            each of the To rows t is the vector of observables at date t (earliest should be listed first)
-    sigma_e : [optional] array (E) giving sd of each shock e, assumed to be 1 if not provided
-    sigma_o : [optional] array (O) giving sd of iid measurement error for each observable o, assumed to be 0 if not provided
-    preperiods : [optional] integer number of pre-periods during which we allow for shocks too. This is suggested to be at
-            least 1 in models where some variables (e.g. investment) only respond with a 1 period lag.
-            (Otherwise there can be invertibility issues)
-
-    Returns
-    ----------
-    eps_hat : array (To*E) giving most likely path of all shocks
-    Ds : array (To*O*E) giving the level of each observed data series that is accounted for by each shock
-    """
-    # Step 1: Rescale As any y
-    To, Oy = y.shape
-    Tm, O, E = As.shape
-    assert Oy == O
-    To_with_pre = To + preperiods
-
-    A_full = construct_stacked_A(As, To=To_with_pre, To_out=To, sigma_e=sigma_e, sigma_o=sigma_o)
-    if sigma_o is not None:
-        y = y / sigma_o
-    y = y.reshape(To*O)
-
-    # Step 2: Solve OLS
-    eps_hat = np.linalg.lstsq(A_full, y, rcond=None)[0]  # this is To*E x 1 dimensional array
-    eps_hat = eps_hat.reshape((To_with_pre, E))
-
-    # Step 3: Decompose data
-    for e in range(E):
-        A_full = A_full.reshape((To,O,To_with_pre,E))
-        Ds = np.sum(A_full * eps_hat,axis=2)
-
-    # Cut away pre periods from eps_hat
-    eps_hat = eps_hat[preperiods:, :]
-
-    return eps_hat, Ds
-
-
 def construct_stacked_A(As, To, To_out=None, sigma_e=None, sigma_o=None, reshape=True, long=False):
     Tm, O, E = As.shape
 
