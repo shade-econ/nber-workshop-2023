@@ -24,7 +24,7 @@ The slides for the lecture are a Jupyter notebook, which [you can view on GitHub
 
 [Part 0: introduction (11:33 min)](https://www.dropbox.com/s/qsdzn2pb3u530r6/Part%200%2C%20introduction.mp4?dl=0)
 
-[Part 1: aggregation (21:00 min)](https://www.dropbox.com/s/c76o4bem126mjd4/Part%201%2C%20aggregation.mp4?dl=0)
+[Part 1: discretizating assets and income (21:00 min)](https://www.dropbox.com/s/c76o4bem126mjd4/Part%201%2C%20aggregation.mp4?dl=0)
 
 [Part 2: backward iteration and policy functions (40:18 min)](https://www.dropbox.com/s/3dhn9oj116vy9qb/Part%202%2C%20backward%20iteration%20and%20policy%20functions.mp4?dl=0)
 
